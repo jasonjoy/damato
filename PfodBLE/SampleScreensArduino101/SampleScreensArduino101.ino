@@ -19,7 +19,7 @@
 int swap01(int); // method prototype for slider end swaps
 
 // =========== pfodBLESerial definitions
-const char* localName = "101 BLE";  // <<<<<<  change this string to customize the adverised name of your board (max 8 chars)
+const char* localName = "D'Amato";  // <<<<<<  change this string to customize the adverised name of your board (max 8 chars)
 class pfodBLESerial : public BLEPeripheral, public Stream {
   public:
     pfodBLESerial(); void begin(); void poll(); size_t write(uint8_t); size_t write(const uint8_t*, size_t); int read();
