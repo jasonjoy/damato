@@ -14,7 +14,7 @@ This is a feedback and training device to help a boxer optimize punching force, 
 * Take video with forward-facing camera and sync to data feed
 
 ##Additional Features requiring Hardware
-* Load cell could calibrate directly measured force (lbs) with acceleration of the target (g-force). This accomplishes 2 things: (1) gives you a real-world force measurement for punches (2) allows you to normalize readings from different targets (e.g. 70 lbs. heavy bag and BOB)
+* Use a [load cell](http://www.digikey.com/product-detail/en/te-connectivity-measurement-specialties/FC2311-0000-0500-L/MSP6953-ND/809399) to compare directly measured force to force calculated from g-force detection.
 * Utilize [Arduino built-in IMU](https://www.arduino.cc/en/Reference/CurieIMU) to measure g-force to 16g, [ADXL377](https://www.adafruit.com/products/1413?gclid=CISd382-_8wCFVNqfgodWAcAMg) to measure from 16g to 200g
 * Multiple accelerometers wired to one Arduino could select sensor with the highest force and use data to localize the punch (head/body)
 * Connect heartrate strap and pace punches to match target HR zone
@@ -25,9 +25,7 @@ This is a feedback and training device to help a boxer optimize punching force, 
 * Pressure sensors in feet could correlate weight transfer to punching power
 
 ##Problems and ideas
-* How to baseline power measurement? Use a [load cell](http://www.digikey.com/product-detail/en/te-connectivity-measurement-specialties/FC2311-0000-0500-L/MSP6953-ND/809399
-) to compare directly measured force to force calculated from g-force detection.
-* Note that this has an output of 100mV, but the Arduino wants analog inputs of 3.3V. I think one of [these amplifiers](http://www.robotshop.com/en/strain-gauge-load-cell-amplifier-shield-2ch.html?gclid=CNqAhNSPhc0CFZNhfgodKigMhQ
+*  [Load cell](http://www.digikey.com/product-detail/en/te-connectivity-measurement-specialties/FC2311-0000-0500-L/MSP6953-ND/809399)  has an output of 100mV, but the Arduino wants analog inputs of 3.3V. I think one of [these amplifiers](http://www.robotshop.com/en/strain-gauge-load-cell-amplifier-shield-2ch.html?gclid=CNqAhNSPhc0CFZNhfgodKigMhQ
 ) should solve the problem.
 * Interesting [sensor for cheap calibration](https://www.sparkfun.com/products/8685). You could also use this to give accuracy points for landing a punch on the button.
 * Hold all accelerometer values in a 4x4 array (currently held in variables)
@@ -43,8 +41,8 @@ This is a feedback and training device to help a boxer optimize punching force, 
 
 ##Math
 * Calculating energy from a pendulum:
-http://www.endmemo.com/physics/spendulum.php
-http://www.wikihow.com/Calculate-Kinetic-Energy
+  - http://www.endmemo.com/physics/spendulum.php
+  - http://www.wikihow.com/Calculate-Kinetic-Energy
 - Maximum punch speed = 10m/s
 - Arm mass = 6 kg
 - Kinetic energy = 300J
@@ -59,7 +57,7 @@ http://www.wikihow.com/Calculate-Kinetic-Energy
 * [StrikeTec](http://efdsports.com/) – Really slick UI, but no indication that it will ever ship: 
 ![](http://efdsports.com/wp-content/uploads/ipad_3_ready.png)
 
-* [Hysko](https://www.hykso.com/) – taking pre-orders for Sept 2016 ship date @ $129. 2017 price planned @ $219. Raised $120K from Y-Combinator and $80K from other investors.
+* [Hysko](https://www.hykso.com/) – taking pre-orders for Sept 2016 ship date @ $129. Retail price planned @ $219 in 2017. Raised $120K from Y-Combinator and $80K from other investors.
 ![](http://i1.wp.com/wp6c4a81c0b4a7.blob.core.windows.net/wp-media/2016/04/DSC00022.png?zoom=2&w=1184&ssl=0)
 
 * Nicely documented project with a 250g sensor:
@@ -73,10 +71,8 @@ https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
 * Detection working
 * Display working and displaying g-force on a 3 axes
 * Peak hold feature working – might want to make this a function
-* Wrote Accelerometer-calibrate function to calibrate for starting orientation
-Issue:
-* Need to be able to factor out 1g gravity
-CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work as I expected: https://www.arduino.cc/en/Reference/CurieIMUsetAccelerometerOffset
+* Wrote calibrate() function to calibrate for starting orientation and accound for 1g gravity at rest
+* [CureIMU.setAcceleratorOffset()](https://www.arduino.cc/en/Reference/CurieIMUsetAccelerometerOffset) is a built-in funcion to adjust for 1g of gravtiy, but I couldn’t get it to work as I expected.
 
 6/1
 * Ordered load cell, amplifier, 200g accelerometer
@@ -102,15 +98,15 @@ CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work a
 * Adapted from https://www.arduino.cc/en/Tutorial/Genuino101CurieBLEHeartRateMonitor
 
 6/4
-* Set up Github repo
+* Set up [Github repo](https://github.com/jasonjoy/damato/)
 * Integrate GitHub repo w/Slack channel
-* Display accelerometer readings from BLE.
-	* http://www.forward.com.au/pfod/BLE/index.html
-	* Using nRF Master Control Panel, I see this is broadcasting as “101 BLE”, and accelerometer values are updating under the “TX Characteristic”
+* [Display accelerometer readings from BLE](./PfodBLE/SampleScreensArduino101)
+	* Adapted from http://www.forward.com.au/pfod/BLE/index.html
+	* Using nRF Master Control Panel, this broadcasts as “D'Amato”, and accelerometer values are updated under the “TX Characteristic”
 
 6/5
-* Break sketch into multiple files
-* Report TotalAcceleration to Bluetooth HeartRate service (AccelerationBLE sketch)
+* [Break sketch into multiple files](./AccelerometerBLE)
+* Report TotalAcceleration to Bluetooth HeartRate service
 
 ##Next steps
 * Get serial port working w/Mac
