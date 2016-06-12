@@ -86,8 +86,8 @@ CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work a
 * Acceleration calculation verified
 * Punch type detection working
 
-| aX | aY | aZ | gCalc | gDisp | punchType
-|--------|--------|
+| aX | aY | aZ | gCalc | gDisp | punchType |
+|---|---|---|---|---|---|
 |   0.19 | 1.21 | 9.55 | 9.63 | 9.63 | Straight |
 |   5.29 | 0.21 | 3.84 | 6.54 | 6.54 | Hook |
 |   0.21 | 7.99 | 2.58 | 8.40 | 8.39 | Uppercut |
