@@ -98,7 +98,7 @@ CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work a
 ![](./images/accTest.jpg)
 
 6/3
-* Get Bluetooth working with this heartrate monitor sketch
+* Get Bluetooth working with this [heartrate monitor sketch](./HeartbeatBLE)
 * Adapted from https://www.arduino.cc/en/Tutorial/Genuino101CurieBLEHeartRateMonitor
 
 6/4
