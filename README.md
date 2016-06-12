@@ -1,4 +1,4 @@
-#Punch Accelerometer
+#Punch Training Coach
 This is a feedback and training device to help a boxer optimize punching force, reaction time, workout intensity, and endurance.
 
 ##Minimum Viable Product
@@ -31,7 +31,8 @@ This is a feedback and training device to help a boxer optimize punching force, 
 ) should solve the problem.
 * Interesting [sensor for cheap calibration](https://www.sparkfun.com/products/8685). You could also use this to give accuracy points for landing a punch on the button.
 * Hold all accelerometer values in a 4x4 array (currently held in variables)
-* || total | ax | ay | az
+
+|| total | ax | ay | az
 |---|---|---|---|---
 | current_reading  | [0,0] | [0,1] | [0,2] | [0,3]
 | previous_reading | [1,0] | [1,1] | [1,2] | [1,3]
@@ -84,7 +85,7 @@ CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work a
 6/2
 * Acceleration calculation verified
 * Punch type detection working
-* 
+
 | aX | aY | aZ | gCalc | gDisp | punchType
 |--------|--------|
 |   0.19 | 1.21 | 9.55 | 9.63 | 9.63 | Straight |
@@ -93,6 +94,7 @@ CureIMU.setAcceleratorOffset() might fix this, but I couldn’t get it to work a
 |   1.33 | 2.90 | 8.54 | 9.12 | 9.11 | Straight |
 |   0.76 | 6.47 | 4.97 | 8.19 | 8.17 | Uppercut |
 |   0.79 | 2.85 | 9.72 | 10.16 | 10.16 | Straight |
+
 ![](./images/accTest.jpg)
 
 6/3
