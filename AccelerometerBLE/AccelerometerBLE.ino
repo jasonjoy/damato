@@ -12,7 +12,7 @@ This sketch integrates the existing Accelerometer sketch with a BLE sketch.
 // set Range to 2, 4, 8, or 16, corresponding to # of g's it will detect
 int AccRange = 16;
 // Frequency of reading acceleration in milliseconds
-int ReadInterval = 2;
+int ReadInterval = 250;
 // Time to remember peak acceleration in milliseconds
 int PeakHoldTime = 1000;
 int xCalibration, yCalibration, zCalibration;
@@ -40,7 +40,7 @@ void setup() {
   //while (!Serial);    // wait for the serial port to open
 
   // initialize device
-  //Serial.println("Initializing IMU device...");
+  Serial.println("Initializing IMU device...");
   CurieIMU.begin();
 
   // Set the accelerometer range
@@ -77,6 +77,7 @@ void loop() {
   if (central) {
     // turn on the LED to indicate the connection:
     digitalWrite(13, HIGH);
+    Serial.println(central.address());
   }
   else {
     // when the central disconnects, turn off the LED:
@@ -95,6 +96,16 @@ void loop() {
   // Calculate total acceleration based on 3-axis inputs, and factoring out force of gravity
   TotalAcceleration = sqrt(sq(ax) + sq(ay) + sq(az));
 
+  // Print everything to serial console
+      Serial.print("ax:");
+      Serial.print(ax);
+      Serial.print(" ay:");
+      Serial.print(ay);
+      Serial.print(" az:");
+      Serial.print(az);
+      Serial.print(" gCalc:");
+      Serial.println(TotalAcceleration);
+                  
   // If we get a new peak, update the peak values
   if (TotalAcceleration > PeakAcceleration) {
     PeakAcceleration = TotalAcceleration;

@@ -16,11 +16,11 @@ This is a feedback and training device to help a boxer optimize punching force, 
 ##Additional Features requiring Hardware
 * Use a [load cell](http://www.digikey.com/product-detail/en/te-connectivity-measurement-specialties/FC2311-0000-0500-L/MSP6953-ND/809399) to compare directly measured force to force calculated from g-force detection.
 * Utilize [Arduino built-in IMU](https://www.arduino.cc/en/Reference/CurieIMU) to measure g-force to 16g, [ADXL377](https://www.adafruit.com/products/1413?gclid=CISd382-_8wCFVNqfgodWAcAMg) to measure from 16g to 200g
-* Multiple accelerometers wired to one Arduino could select sensor with the highest force and use data to localize the punch (head/body)
+* Multiple accelerometers wired to one Arduino could select sensor with the highest force and compare data to localize the punch (head/body)
 * Connect heartrate strap and pace punches to match target HR zone
 * Acceleration sensor on hands could add a lot of useful data:
 	- Hand speed
-	- Inefficiency - cocking arm before punching
+	- Inefficiency - loading up before punching
 	- Break out reaction time vs. time to target into separate measurements
 * Pressure sensors in feet could correlate weight transfer to punching power
 
@@ -94,8 +94,7 @@ https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
 ![](./images/accTest.jpg)
 
 6/3
-* Get Bluetooth working with this [heartrate monitor sketch](./HeartbeatBLE)
-* Adapted from https://www.arduino.cc/en/Tutorial/Genuino101CurieBLEHeartRateMonitor
+* Bluetooth working with this [heartrate monitor sketch](./HeartbeatBLE), adapted from [this tutorial](https://www.arduino.cc/en/Tutorial/Genuino101CurieBLEHeartRateMonitor) 
 
 6/4
 * Set up [Github repo](https://github.com/jasonjoy/damato/)
@@ -108,9 +107,13 @@ https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
 * [Break sketch into multiple files](./AccelerometerBLE)
 * Report TotalAcceleration to Bluetooth HeartRate service
 
+6/12
+* Serial monitor working w/Mac: [fix here](http://http://forum.arduino.cc/index.php?topic=82998.0)
+`sudo mkdir /var/lock; sudo chmod 777 /var/lock`
+* Capture a stream of raw data to SerialMonitor
+`sudo tail -f /dev/cu.usbmodem1411 > foo.txt`
+
 ##Next steps
-* Get serial port working w/Mac
-* Record a stream of raw data
 * Test IMU calibration sketch: https://www.arduino.cc/en/Tutorial/Genuino101CurieIMUOrientationVisualiser
 * Test this sketch to visualize orientation of punching bag in real time:
 https://www.arduino.cc/en/Tutorial/Genuino101CurieIMUOrientationVisualiser
