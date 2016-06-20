@@ -109,10 +109,16 @@ https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
 
 6/12
 * Serial monitor working w/Mac: [fix here](http://http://forum.arduino.cc/index.php?topic=82998.0)
-`sudo mkdir /var/lock; sudo chmod 777 /var/lock`
+
+`sudo mkdir /var/lock`
+`sudo chmod 777 /var/lock`
 * Capture a stream of raw data to SerialMonitor
+
 `sudo tail -f /dev/cu.usbmodem1411 > foo.txt`
 
+6/19
+* Set up pendulum to test load cell with a known load (dumbell connected with 2 small sections of 1/8" wire rope to a carabiner, hanging from 1/8" wire rope pendulum strung through a primary and backup screw eye in the ceiling)
+ 
 ##Next steps
 * Test IMU calibration sketch: https://www.arduino.cc/en/Tutorial/Genuino101CurieIMUOrientationVisualiser
 * Test this sketch to visualize orientation of punching bag in real time:
