@@ -110,8 +110,12 @@ https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
 6/12
 * Serial monitor working w/Mac: [fix here](http://http://forum.arduino.cc/index.php?topic=82998.0)
 
+<<<<<<< HEAD
 `sudo mkdir /var/lock`
 `sudo chmod 777 /var/lock`
+=======
+`sudo mkdir /var/lock; sudo chmod 777 /var/lock`
+>>>>>>> origin/master
 * Capture a stream of raw data to SerialMonitor
 
 `sudo tail -f /dev/cu.usbmodem1411 > foo.txt`
