@@ -59,6 +59,7 @@ This is a feedback and training device to help a boxer optimize punching force, 
 
 * [Hysko](https://www.hykso.com/) – taking pre-orders for Sept 2016 ship date @ $129. Retail price planned @ $219 in 2017. Raised $120K from Y-Combinator and $80K from other investors.
 ![](http://i1.wp.com/wp6c4a81c0b4a7.blob.core.windows.net/wp-media/2016/04/DSC00022.png?zoom=2&w=1184&ssl=0)
+![](images/hykso-proto.jpg)
 
 * Nicely documented project with a 250g sensor:
 https://abieneman.wordpress.com/2010/04/04/punch-acceleration-sensor/
